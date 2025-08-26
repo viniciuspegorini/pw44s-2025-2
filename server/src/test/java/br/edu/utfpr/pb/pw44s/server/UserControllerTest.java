@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment =
@@ -56,4 +58,18 @@ public class UserControllerTest {
         assertThat(userRepository.count()).isEqualTo(1);
     }
 
+    @Test
+    public void putUser_whenUserIsValid_passwordIsHashedInDatabase() {
+        User user = new User();
+        user.setUsername("test-user");
+        user.setDisplayName("test-Display");
+        user.setPassword("P4ssword");
+
+        testRestTemplate.postForEntity("/users", user, Object.class);
+
+        List<User> users = userRepository.findAll();
+        User userDB =  users.get(0);
+
+        assertThat(user.getPassword()).isNotEqualTo(userDB.getPassword());
+    }
 }
