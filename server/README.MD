@@ -2349,7 +2349,7 @@ public abstract class CrudServiceImpl<T, ID extends Serializable> implements ICr
     }  
   
     @Override  
-    public void delete(ID id) {  
+    public void deleteById(ID id) {  
         getRepository().deleteById(id);  
     }  
   
