@@ -1,7 +1,7 @@
 package br.edu.utfpr.pb.pw44s.server;
 
 import br.edu.utfpr.pb.pw44s.server.model.User;
-import br.edu.utfpr.pb.pw44s.server.respository.UserRepository;
+import br.edu.utfpr.pb.pw44s.server.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
