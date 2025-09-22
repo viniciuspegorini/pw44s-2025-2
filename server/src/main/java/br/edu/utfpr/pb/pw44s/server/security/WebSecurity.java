@@ -77,7 +77,9 @@ public class WebSecurity {
                 //Filtro da Autorização - - sobrescreve o método padrão do Spring Security para Autorização.
                 .addFilter(new JWTAuthorizationFilter(authenticationManager, authService))
                 //Como será criada uma API REST e todas as requisições que necessitam de autenticação/autorização serão realizadas com o envio do token JWT do usuário, não será necessário fazer controle de sessão no *back-end*.
-                .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionManagement(
+                        sessionManagement -> 
+                                sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
         return http.build();
     }
