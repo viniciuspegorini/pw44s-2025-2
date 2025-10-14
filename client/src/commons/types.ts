@@ -30,3 +30,8 @@ export interface AuthenticationResponse {
   token: string;
   user: AuthenticatedUser;
 }
+
+export  interface  ICategory {
+    id?:  number;
+    name:  string;
+}
