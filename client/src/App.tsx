@@ -1,14 +1,11 @@
 import './App.css'
-import { RegisterPage } from '@/pages/register'
-import { LoginPage } from '@/pages/login'
+import { AppRoutes } from '@/routes/app-routes'
 
 function App() {
   // react-developer-tools
   return (
     <>
-      <RegisterPage />
-
-      <LoginPage />
+      <AppRoutes />
     </>
   )
 }

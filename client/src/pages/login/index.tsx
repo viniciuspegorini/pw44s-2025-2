@@ -5,9 +5,10 @@ import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import { Link, useNavigate } from "react-router-dom";
-import type { IUserLogin } from "@/commons/types";
+import type { AuthenticationResponse, IUserLogin } from "@/commons/types";
 import AuthService from "@/services/auth-service";
 import { Toast } from "primereact/toast";
+import { useAuth } from "@/context/hooks/use-auth";
 
 export const LoginPage = () => {
   const {
@@ -19,12 +20,15 @@ export const LoginPage = () => {
   const { login } = AuthService;
   const toast = useRef<Toast>(null);
   const [loading, setLoading] = useState(false);
+  const { handleLogin } =  useAuth(); // A função handleLogin será utilizada para atualizar o contexto com o usuário autenticado.
 
   const onSubmit = async (userLogin: IUserLogin) => {
     setLoading(true);
     try {
       const response = await login(userLogin);
-      if (response.status === 200 && response.data) {                
+      if (response.status === 200 && response.data) {
+        const authenticationResponse = response.data as AuthenticationResponse; // Define o objeto com token após a autenticação
+        handleLogin(authenticationResponse); // o contexto é atualizado com os dados da autenticação              
         toast.current?.show({
           severity: "success",
           summary: "Sucesso",
