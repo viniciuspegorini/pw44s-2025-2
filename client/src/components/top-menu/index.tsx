@@ -46,6 +46,22 @@ const TopMenu: React.FC = () => {
               command: () => navigate("/categories/new"),
             },            
           ],
+        },
+        {
+          label: "Produtos",
+          icon: "pi pi-box",
+          items: [
+            {
+              label: "Listar",
+              icon: "pi pi-list",
+              command: () => navigate("/products"),
+            },
+            {
+              label: "Novo",
+              icon: "pi pi-plus",
+              command: () => navigate("/products/new"),
+            },
+          ],
         },          
       ]
     : [];
