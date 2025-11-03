@@ -6,6 +6,8 @@ import { RequireAuth } from "@/components/require-auth";
 import { Layout } from "@/components/layout";
 import { CategoryListPage } from "@/pages/category-list";
 import { CategoryFormPage } from "@/pages/category-form";
+import { ProductListPage } from "@/pages/product-list";
+import { ProductFormPage } from "@/pages/product-form";
 
 export function AppRoutes() {
   return (
@@ -21,8 +23,12 @@ export function AppRoutes() {
           <Route path="/home" element={<HomePage />} />
 
           <Route path="/categories" element={<CategoryListPage />} />
-          <Route  path="/categories/new"  element={<CategoryFormPage  />}  />
-		      <Route  path="/categories/:id"  element={<CategoryFormPage  />}  />
+          <Route path="/categories/new" element={<CategoryFormPage />} />
+		      <Route path="/categories/:id" element={<CategoryFormPage />} />
+
+          <Route path="/products" element={<ProductListPage />} />
+          <Route path="/products/new" element={<ProductFormPage />} />
+          <Route path="/products/:id" element={<ProductFormPage />} />
         </Route>
       </Route>
     </Routes>
